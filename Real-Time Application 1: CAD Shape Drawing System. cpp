@@ -15,14 +15,15 @@ private:
     double radius;
 
 public:
-    explicit Circle(double r) : radius(r) {}
+    Circle(double r) : radius(r) {}
 
     double area() const override {
-        return 3.14159265359 * radius * radius;
+        return 3.14159 * radius * radius;
     }
 
     void draw() const override {
-        cout << "Drawing circle with radius " << radius << endl;
+        cout << "Drawing circle with radius "
+             << radius << endl;
     }
 };
 
@@ -39,8 +40,8 @@ public:
     }
 
     void draw() const override {
-        cout << "Drawing rectangle " << length
-             << " x " << width << endl;
+        cout << "Drawing rectangle "
+             << length << " x " << width << endl;
     }
 };
 
@@ -57,23 +58,26 @@ public:
     }
 
     void draw() const override {
-        cout << "Drawing triangle with base " << base
-             << " and height " << height << endl;
+        cout << "Drawing triangle with base "
+             << base << " and height "
+             << height << endl;
     }
 };
 
 int main() {
+
     vector<unique_ptr<Shape>> shapes;
 
-    shapes.push_back(make_unique<Circle>(5.0));
-    shapes.push_back(make_unique<Rectangle>(4.0, 6.0));
-    shapes.push_back(make_unique<Triangle>(3.0, 8.0));
+    shapes.push_back(make_unique<Circle>(6.0));
+    shapes.push_back(make_unique<Rectangle>(5.0, 7.0));
+    shapes.push_back(make_unique<Triangle>(4.0, 9.0));
 
     cout << "=== CAD Shape System ===" << endl;
 
     for (const auto& shape : shapes) {
         shape->draw();
-        cout << "Area: " << shape->area()
+        cout << "Area: "
+             << shape->area()
              << " square units" << endl;
     }
 
